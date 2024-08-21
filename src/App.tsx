@@ -1,49 +1,8 @@
 import { FaTable, FaThLarge } from "react-icons/fa";
+import { Home, New, Stories } from "./pages";
+import { NavLink, Route, Routes } from "react-router-dom";
 
-import { Table } from "./components";
-
-const data = [
-  {
-    id: 1,
-    title: "The Moon that Can't be Seen",
-    writer: "Rara",
-    category: "Teen Fiction",
-    keywords: ["school", "fiction"],
-    status: "Draft",
-  },
-  {
-    id: 2,
-    title: "Given",
-    writer: "Sansa S.",
-    category: "Romance",
-    keywords: ["music"],
-    status: "Draft",
-  },
-  {
-    id: 3,
-    title: "Fish Swimming in The Sky",
-    writer: "Kaenarita Faly",
-    category: "Fantasy",
-    keywords: ["fantasy", "romance"],
-    status: "Publish",
-  },
-  {
-    id: 4,
-    title: "The Science of Fertitlty PCOS",
-    writer: "Jessie Inchauspe",
-    category: "Non Fiction",
-    keywords: ["science", "PCOS"],
-    status: "Publish",
-  },
-  {
-    id: 5,
-    title: "The Glucose Goddess Method",
-    writer: "Jessie Inchauspe",
-    category: "Non Fiction",
-    keywords: ["glucose", "science"],
-    status: "Publish",
-  },
-];
+import { twMerge } from "tailwind-merge";
 
 export default function App() {
   return (
@@ -55,32 +14,42 @@ export default function App() {
 
         <ul>
           <li>
-            <a
-              href="#"
-              className="flex w-full items-center gap-4 px-8 py-2 font-semibold text-black hover:bg-primary hover:text-white"
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                twMerge(
+                  "flex w-full items-center gap-4 px-8 py-2 font-semibold text-black hover:bg-primary/50 hover:text-white",
+                  isActive && "!bg-primary text-white",
+                )
+              }
             >
               <FaThLarge />
               <span className="text-sm">Dashboard</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="flex w-full items-center gap-4 px-8 py-2 font-semibold text-black hover:bg-primary hover:text-white"
+            <NavLink
+              to="/stories"
+              className={({ isActive }) =>
+                twMerge(
+                  "flex w-full items-center gap-4 px-8 py-2 font-semibold text-black hover:bg-primary/50 hover:text-white",
+                  isActive && "!bg-primary text-white",
+                )
+              }
             >
               <FaTable />
               <span className="text-sm">Story Management</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </aside>
 
       <main className="flex-auto overflow-auto px-8 py-8">
-        <h1 className="text-2xl font-bold">Stories</h1>
-
-        <div className="mt-8 rounded-xl border border-black/10 px-8 py-6 shadow-md">
-          <Table stories={data} />
-        </div>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="/stories/new" element={<New />} />
+        </Routes>
       </main>
     </div>
   );

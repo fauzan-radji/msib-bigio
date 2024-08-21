@@ -1,13 +1,13 @@
 import { twMerge } from "tailwind-merge";
 
-interface PaginationProps {
+interface PaginationButtonProps {
   className?: string;
 }
 
 export default function PaginationButton({
   className,
   ...rest
-}: PaginationProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+}: PaginationButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       className={twMerge(
