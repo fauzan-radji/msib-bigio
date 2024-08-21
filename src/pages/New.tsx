@@ -1,10 +1,19 @@
 import { Button, Card, Input, Table, Td } from "../components";
-import { FaPlus, FaSave, FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaSave, FaTimes } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 
 export default function New() {
   return (
     <>
       <h1 className="text-2xl font-bold">Add Story</h1>
+      <Link
+        to="/stories"
+        className="inline-flex items-center justify-center gap-1 rounded-full bg-black/20 px-2 py-1 text-xs"
+      >
+        <FaArrowLeft className="text-[0.7rem]" />
+        Back
+      </Link>
 
       <form>
         <Card className="flex flex-col gap-4">
@@ -27,7 +36,7 @@ export default function New() {
             </Input>
           </div>
 
-          <Button className="self-end">
+          <Button as={Link} to="/stories/new/chapter" className="self-end">
             <FaPlus />
             Add Chapter
           </Button>

@@ -1,5 +1,5 @@
+import { Chapter, Home, New, Stories } from "./pages";
 import { FaTable, FaThLarge } from "react-icons/fa";
-import { Home, New, Stories } from "./pages";
 import { NavLink, Route, Routes } from "react-router-dom";
 
 import { twMerge } from "tailwind-merge";
@@ -49,6 +49,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/stories" element={<Stories />} />
           <Route path="/stories/new" element={<New />} />
+          <Route path="/stories/new/chapter" element={<Chapter />} />
         </Routes>
       </main>
     </div>

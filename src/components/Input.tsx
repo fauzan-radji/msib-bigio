@@ -1,3 +1,4 @@
+import Editor from "./Editor";
 import { twMerge } from "tailwind-merge";
 
 // TODO: add type badge input and file input
@@ -5,7 +6,7 @@ interface InputProps {
   className?: string;
   label: string;
   placeholder?: string;
-  type?: "text" | "select" | "textarea";
+  type?: "text" | "select" | "textarea" | "rich";
   children?: React.ReactNode;
 }
 export default function Input({
@@ -42,6 +43,7 @@ export default function Input({
           {children}
         </select>
       )}
+      {type === "rich" && <Editor />}
     </label>
   );
 }
